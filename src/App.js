@@ -1,19 +1,24 @@
 import './App.css';
 import Axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [fact, setFact] = useState("");
 
-  // This will constantly render our UI with new facts as the fact is changing
-  Axios("https://catfact.ninja/fact")
-  .then((res) => {
-    setFact(res.data.fact);
-  })
+  const fetchFact = () => {
+    Axios("https://catfact.ninja/fact")
+    .then((res) => {
+      setFact(res.data.fact);
+    });
+  }
+
+  useEffect(() => {
+    fetchFact();
+  }, []);
 
   return (
     <div className="App">
-      <button> Generate Cat Fact</button>
+      <button onClick={fetchFact}> Generate Cat Fact</button>
       <p> {fact} </p>
     </div>
   );
