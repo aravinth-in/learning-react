@@ -8,9 +8,15 @@ function App() {
   return (
     <div className="App">
       {ecosystem_projects.map((project, key) => {
-        return <h2> {project.name} {project.description}</h2>;
+        return <Project name={project.name} des={project.description} />;
       })}
     </div>
+  );
+}
+
+const Project = (props) => {
+  return (
+    <div> {props.name} {props.des}</div>
   );
 }
 
