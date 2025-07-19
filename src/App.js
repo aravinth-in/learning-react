@@ -1,14 +1,11 @@
 import './App.css';
-import {Project} from './Project.js'
+import { useState } from 'react'; 
 
 function App() {
-  let count = 0;
+  const [count, setCount] = useState(0); // Initial count value set to 0
 
-  // This will increase the count, but not in UI as react render this count only once.
-  // refer count_increment_not_updated_ui.png
   const increaseCount = () => {
-    count++;
-    console.log(count);
+    setCount(count + 1);
   }
   return (
     <div className="App">
