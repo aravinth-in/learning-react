@@ -1,4 +1,5 @@
 import './App.css';
+import {Project} from './Project.js'
 
 function App() {
   const ecosystem_projects = [
@@ -11,12 +12,6 @@ function App() {
         return <Project name={project.name} des={project.description} />;
       })}
     </div>
-  );
-}
-
-const Project = (props) => {
-  return (
-    <div> {props.name} {props.des}</div>
   );
 }
 
