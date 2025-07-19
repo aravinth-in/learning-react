@@ -1,15 +1,12 @@
 import './App.css';
 
 function App() {
-  const price = 4000;
-  const isSentimentBullish = true;
+  const ecosystem_projects = ["Aave", "Uniswap", "Lido", "ENS"];
   return (
     <div className="App">
-      {price >= 100 ? <h1> more than 4 digits </h1> : <h1> under 4 digits</h1>}
-      <h2 style={{color: isSentimentBullish ? "green" : "red"}}> Market Sentiment</h2>
-
-      {isSentimentBullish && <button> Buy </button>}
-      {!isSentimentBullish && <button> Sell </button>}
+    {ecosystem_projects.map((project, key) => {
+      return <h2 key={key}> {project} </h2>;
+    })}
     </div>
   );
 }
