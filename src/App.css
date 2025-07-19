@@ -19,6 +19,7 @@ button{
   background-color: white;
   font-size: 1rem;
   padding: 7px;
+  margin: 0 10px;
 }
 
 .addTask{
@@ -30,7 +31,13 @@ button{
 }
 
 .list{
-  background-color:rgb(220, 219, 250);
   margin: 0;
   text-align: center;
+}
+
+.displayTask{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
 }
