@@ -3,19 +3,19 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Ethereum />
+      <Ethereum name="Ethereum" description="World Ledger" age={10} />
     </div>
   );
 }
 
 // Components
-const Ethereum = () => {
+const Ethereum = (props) => {
   return (
     // jsx
     <div>
-      <h1> Ethereum </h1> 
-      <h2> World Ledger</h2>
-      <h3>10 years</h3>
+      <h1> {props.name} </h1> 
+      <h2> {props.description} </h2>
+      <h3> {props.age} </h3>
     </div>
   );
 }
