@@ -2,14 +2,15 @@ import './App.css';
 import { useState } from 'react'; 
 
 function App() {
-  const [count, setCount] = useState(0); // Initial count value set to 0
+  const [inputText, setInputText] = useState("");
 
-  const increaseCount = () => {
-    setCount(count + 1);
+  const handleInputText = (event) => {
+    setInputText(event.target.value);
   }
   return (
     <div className="App">
-      {count} <button onClick={increaseCount}> Increase Count</button>
+      <input type="text" onChange={handleInputText}/>
+      <div> {inputText} </div>
     </div>
   );
 }
