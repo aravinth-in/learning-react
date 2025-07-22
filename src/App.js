@@ -1,27 +1,18 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, useSearchParams } from 'react-router-dom';
-import {Home} from './pages/Home';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Cat } from './components/Cat';
-
+import { Person } from './components/Person';
 
 function App() {
-  const client = new QueryClient({defaultOptions: {
-    queries : {
-      refetchOnWindowFocus: false,
-    },
-  }
-  });
-
   return (
     <div className="App">
-<   QueryClientProvider client={client}>
-      <Router>
-        <Routes>
-          <Route path='/' element={<Cat />} />
-        </Routes>
-      </Router>
-      </QueryClientProvider>
+      <Person 
+        name = "Ethereum" // Name accept a number as it is type safety
+        email = "worldcomputer@eth.com"
+        age = {10}
+        isMarried = {false}
+        // Change to string, it break as string don't have map function.
+        // Change to friends = null, it break the page
+        friends = {["base", "arbitrum", "zksync"]} 
+      />
     </div>
   );
 }
