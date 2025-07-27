@@ -1,12 +1,14 @@
 import React from 'react';
-import Greeting from './Greeting';
-import Header from './Header';
-import Button from './Button';
-import Counter from './Counter';
-import Toggle from './Toggle';
-import InputField from './InputField';
-import RandomNumberDisplay from './RandomNumberDisplay';
-import LiveClock from './LiveClock'; 
+import Greeting from './components/Greeting';
+import Header from './components/Header';
+import Button from './components/Button';
+import Counter from './components/Counter';
+import Toggle from './components/Toggle';
+import InputField from './components/InputField';
+import RandomNumberDisplay from './components/RandomNumberDisplay';
+import LiveClock from './components/LiveClock';
+import LoginControl from './components/LoginControl'
+import LoadingSpinner from './components/LoadingSpinner'
 
 const App = () => {
   const appTitle = "React Event Handling Demo";
@@ -26,6 +28,8 @@ const App = () => {
       <InputField />
       <RandomNumberDisplay />
       <LiveClock />
+      <LoginControl />
+      <LoadingSpinner />
 
       {/* Buttons demonstrating different ways to pass click handlers */}
       <Button text="Say Hello from App" onClick={() => appButtonClickHandler("Hello!")} />
