@@ -3,28 +3,29 @@ import Greeting from './Greeting';
 import Header from './Header';
 import Button from './Button';
 import Counter from './Counter';
+import Toggle from './Toggle';
+import InputField from './InputField';
 
 const App = () => {
-  const appTitle = "My Interactive React App";
+  const appTitle = "React Event Handling Demo";
   const developerName = "React Master";
   const company = "Awesome Devs";
 
-  const buttonClickHandler = () => {
-    alert("Button was clicked from App.js!");
+  const appButtonClickHandler = (message) => {
+    alert(`Button from App.js clicked: ${message}`);
   };
 
   return (
     <>
       <Header title={appTitle} />
-
-      <Greeting name="Alice" message="Hope you have a great day!" />
-      <Greeting name="Bob" message="Welcome aboard!" />
-
+      <Greeting name="Aave" message="Hope you have a great day!" />
       <Counter />
-      <Counter /> {/* You can add multiple instances, and each will have its own independent state! */}
+      <Toggle />
+      <InputField />
 
-      <Button text="Click Me!" onClick={buttonClickHandler} />
-      <Button text="Learn More" onClick={() => alert("More info coming soon!")} />
+      {/* Buttons demonstrating different ways to pass click handlers */}
+      <Button text="Say Hello from App" onClick={() => appButtonClickHandler("Hello!")} />
+      <Button text="Say Goodbye from App" onClick={() => appButtonClickHandler("Goodbye!")} />
 
       <footer>
         <p>&copy; {new Date().getFullYear()} {company}</p>

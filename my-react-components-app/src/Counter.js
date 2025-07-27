@@ -4,23 +4,9 @@ const Counter = () => {
   // Declare a state variable 'count' and its setter function 'setCount'
   const [count, setCount] = useState(0);
 
-  // Event handler for incrementing the count
-  const handleIncrement = () => {
-    setCount(count + 1);
-    console.log("Incremented count to:", count + 1); // Note: console.log might show old value due to async updates
-  };
-
-  // Event handler for decrementing the count
-  const handleDecrement = () => {
-    // You can also use a functional update if the new state depends on the previous state
-    // setCount(prevCount => prevCount - 1); // More reliable for complex updates
-    setCount(count - 1);
-    console.log("Decremented count to:", count - 1);
-  };
-
-  const handleReset = () => {
-    setCount(0);
-  };
+  const handleIncrement = () => setCount(prevCount => prevCount + 1);
+  const handleDecrement = () => setCount(prevCount => prevCount - 1);
+  const handleReset = () => setCount(0);
 
   return (
     <div style={{
