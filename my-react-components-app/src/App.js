@@ -5,6 +5,8 @@ import Button from './Button';
 import Counter from './Counter';
 import Toggle from './Toggle';
 import InputField from './InputField';
+import RandomNumberDisplay from './RandomNumberDisplay';
+import LiveClock from './LiveClock'; 
 
 const App = () => {
   const appTitle = "React Event Handling Demo";
@@ -22,6 +24,8 @@ const App = () => {
       <Counter />
       <Toggle />
       <InputField />
+      <RandomNumberDisplay />
+      <LiveClock />
 
       {/* Buttons demonstrating different ways to pass click handlers */}
       <Button text="Say Hello from App" onClick={() => appButtonClickHandler("Hello!")} />
