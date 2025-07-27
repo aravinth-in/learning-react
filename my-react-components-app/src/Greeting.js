@@ -1,16 +1,16 @@
-import React from 'react';
 
-export const Greeting = (props) => {
-  // Components receive their data (from their parent) via a single 'props' object.
-  // We can destructure the 'name' property from the props object for cleaner code.
-
+const Greeting = ({ name, message }) => {
+  // 'name' and 'message' are now directly available as variables
   return (
-    // JSX returned by the component
-    <>
-        <div style={{ padding: '10px', margin: '5px', border: '1px solid lightgray', borderRadius: '5px' }}>
-        <h2>Hello, {props.name}!</h2>
-        <p>This greeting comes from the Greeting component.</p>
-        </div>
-    </>
+    <div style={{ padding: '10px', margin: '5px', border: '1px solid lightgray', borderRadius: '5px', backgroundColor: '#eef' }}>
+      <h2>Hello, {name}!</h2>
+      <p>{message}</p>
+      {/*
+        If we tried to do name = "New Name"; here, it would result in an error
+        because props are read-only.
+      */}
+    </div>
   );
-}
+};
+
+export default Greeting;

@@ -1,44 +1,35 @@
 import React from 'react';
+import Greeting from './Greeting';
+import Header from './Header';
+import Button from './Button';
 
-// Import our custom components
-import { Greeting } from './Greeting';
-import { Header } from './Header';
+const App = () => {
+  const appTitle = "My Enhanced React App";
+  const developerName = "React Master";
+  const company = "Awesome Devs";
 
-/**
- * Main application component.
- * This component acts as the root of our UI tree and renders other components.
- */
-function App() {
-  const appTitle = "My Awesome React App";
-  const currentUser = "Aave";
+  const buttonClickHandler = () => {
+    alert("Button was clicked!");
+  };
 
   return (
-    // React components must return a single root element.
-    // We use a React Fragment (<></>) here to avoid adding an extra div to the DOM.
     <>
-      {/*
-        Using our custom Header component.
-        We pass a 'title' prop to it.
-        Props are how components communicate data from parent to child.
-      */}
       <Header title={appTitle} />
 
-      {/*
-        Using our custom Greeting component.
-        We pass a 'name' prop to it.
-      */}
-      <Greeting name={currentUser} />
+      {/* Passing different props to different instances of Greeting */}
+      <Greeting name="Alice" message="Hope you have a great day!" />
+      <Greeting name="Bob" message="Welcome aboard!" />
+      <Greeting name={developerName} message={`Built by ${developerName} at ${company}.`} />
 
-      {/* Another instance of the Greeting component, demonstrating reusability */}
-      <Greeting name="Base" />
+      {/* Passing a function as a prop (event handler) */}
+      <Button text="Click Me!" onClick={buttonClickHandler} />
+      <Button text="Learn More" onClick={() => alert("More info coming soon!")} />
 
       <footer>
-        <p>This is the footer of the application.</p>
-        <p>&copy; {new Date().getFullYear()} My React App</p>
+        <p>&copy; {new Date().getFullYear()} {company}</p>
       </footer>
     </>
   );
-}
+};
 
-// Export the App component so it can be used in other files (like index.js)
 export default App;

@@ -12,11 +12,6 @@ const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    {/*
-      <React.StrictMode> is a tool for highlighting potential problems in an application.
-      It activates additional checks and warnings for its descendants.
-      It does NOT render any visible UI.
-    */}
     <App />
   </React.StrictMode>
 );
