@@ -11,6 +11,7 @@ import LoginControl from './components/LoginControl'
 import LoadingSpinner from './components/LoadingSpinner'
 import ListDisplay from './components/ListDisplay'
 import RegistrationForm from './components/RegistrationForm'
+import FragmentExample from './components/Table'
 
 const App = () => {
   const appTitle = "React Event Handling Demo";
@@ -34,6 +35,7 @@ const App = () => {
       <LoadingSpinner />
       <ListDisplay />
       <RegistrationForm />
+      <FragmentExample />
 
       {/* Buttons demonstrating different ways to pass click handlers */}
       <Button text="Say Hello from App" onClick={() => appButtonClickHandler("Hello!")} />
