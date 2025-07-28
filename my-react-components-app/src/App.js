@@ -13,6 +13,10 @@ import ListDisplay from './components/ListDisplay'
 import RegistrationForm from './components/RegistrationForm'
 import FragmentExample from './components/Table'
 import PortalDemo from './components/PortalDemo';
+import InlineStyleDemo from './components/InlineStyleDemo';
+import GlobalStyleDemo from './components/GlobalStyleDemo';
+import CssModuleDemo from './components/CssModuleDemo';
+import StyledComponentsDemo from './components/StyledComponentsDemo';
 
 const App = () => {
   const appTitle = "React Event Handling Demo";
@@ -38,6 +42,10 @@ const App = () => {
       <RegistrationForm />
       <FragmentExample />
       <PortalDemo />
+      <InlineStyleDemo />
+      <GlobalStyleDemo />
+      <CssModuleDemo />
+      <StyledComponentsDemo />
 
       {/* Buttons demonstrating different ways to pass click handlers */}
       <Button text="Say Hello from App" onClick={() => appButtonClickHandler("Hello!")} />

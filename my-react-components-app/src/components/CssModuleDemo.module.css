@@ -1,0 +1,37 @@
+.container {
+  background-color: #d1c4e9;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.title {
+  color: #673ab7;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.paragraph {
+  font-style: italic;
+  font-size: 15px;
+  color: #4527a0;
+  padding: 10px;
+  border: 1px solid #673ab7;
+  border-left: 5px solid #673ab7;
+}
+
+.moduleButton {
+  background-color: #9c27b0;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.moduleButton:active {
+  transform: translateY(2px);
+}
