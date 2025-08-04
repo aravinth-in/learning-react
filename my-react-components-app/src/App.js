@@ -26,15 +26,15 @@ import ThemedBox from './components/ThemedBox';
 import UseRefDemo from './UseRefDemo';
 import ReducerCounter from './ReducerCounter';
 import UserFormReducer from './UserFormReducer';
+import PerformanceDemo from './PerformanceDemo';
 
 const App = () => {
-  const appTitle = "React useReducer Hook Demo";
+  const appTitle = "React Performance Hooks Demo";
 
   return (
     <>
       <Header title={appTitle} />
-      <ReducerCounter />
-      <UserFormReducer />
+      <PerformanceDemo />
     </>
   );
 };
