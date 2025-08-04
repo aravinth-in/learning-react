@@ -27,14 +27,15 @@ import UseRefDemo from './UseRefDemo';
 import ReducerCounter from './ReducerCounter';
 import UserFormReducer from './UserFormReducer';
 import PerformanceDemo from './PerformanceDemo';
+import CustomHooksDemo from './CustomHooksDemo';
 
 const App = () => {
-  const appTitle = "React Performance Hooks Demo";
+  const appTitle = "React Custom Hooks Demo";
 
   return (
     <>
       <Header title={appTitle} />
-      <PerformanceDemo />
+      <CustomHooksDemo />
     </>
   );
 };
