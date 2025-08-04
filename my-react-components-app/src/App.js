@@ -19,52 +19,47 @@ import CssModuleDemo from './components/CssModuleDemo';
 import StyledComponentsDemo from './components/StyledComponentsDemo';
 import EffectCounter from './components/EffectCounter';
 import TimerWithCleanup from './components/TimerWithCleanup';
+import ThemeContext from './ThemeContext';
+import ThemeToggler from './components/ThemeToggler';
+import NestedComponent from './components/NestedComponent';
+import ThemedBox from './components/ThemedBox';
 
 const App = () => {
-  const appTitle = "React useEffect Hook Demo";
-  const [showTimer, setShowTimer] = useState(true); // State to show/hide TimerWithCleanup
+  const appTitle = "React Context API Demo";
+  const [theme, setTheme] = useState('light'); // State to manage the current theme
 
-  const appButtonClickHandler = (message) => {
-    alert(`Button from App.js clicked: ${message}`);
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
+  // The value provided to the context. It's an object containing both theme and toggleTheme function.
+  const contextValue = { theme, toggleTheme };
+
   return (
-    <>
+    // Provide the Context
+    // All components inside this Provider can access the 'theme' and 'toggleTheme'
+    <ThemeContext.Provider value={contextValue}>
       <Header title={appTitle} />
-      <Greeting name="Aave" message="Hope you have a great day!" />
-      <Counter />
-      <Toggle />
-      <InputField />
-      <RandomNumberDisplay />
-      <LiveClock />
-      <LoginControl />
-      <LoadingSpinner />
-      <ListDisplay />
-      <RegistrationForm />
-      <FragmentExample />
-      <PortalDemo />
-      <InlineStyleDemo />
-      <GlobalStyleDemo />
-      <CssModuleDemo />
-      <StyledComponentsDemo />
+      <div style={{
+        backgroundColor: theme === 'light' ? '#fff' : '#222', // App background changes with theme
+        color: theme === 'light' ? '#333' : '#eee',
+        minHeight: '100vh',
+        padding: '20px',
+        transition: 'background-color 0.3s ease, color 0.3s ease'
+      }}>
+        <h1>Application Root</h1>
+        <p>This is the main application. It sets the theme context.</p>
 
-      <EffectCounter />
+        <ThemeToggler /> {/* This component consumes context to toggle theme */}
+        <NestedComponent /> {/* This component's child consumes context */}
 
-      {/* Conditionally render the TimerWithCleanup to demonstrate unmount cleanup */}
-      <div style={{ textAlign: 'center', margin: '20px' }}>
-        <button
-          onClick={() => setShowTimer(!showTimer)}
-          style={{ padding: '10px 20px', fontSize: '1em', backgroundColor: '#9c27b0', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
-        >
-          {showTimer ? 'Hide Timer Component' : 'Show Timer Component'}
-        </button>
+        <div style={{ marginTop: '30px', borderTop: '1px solid #ccc', paddingTop: '20px' }}>
+          <h3>Another Section</h3>
+          <p>This section is also affected by the global theme.</p>
+          <ThemedBox />
+        </div>
       </div>
-      {showTimer && <TimerWithCleanup />}
-
-      {/* Buttons demonstrating different ways to pass click handlers */}
-      <Button text="Say Hello from App" onClick={() => appButtonClickHandler("Hello!")} />
-      <Button text="Say Goodbye from App" onClick={() => appButtonClickHandler("Goodbye!")} />
-    </>
+    </ThemeContext.Provider>
   );
 };
 
