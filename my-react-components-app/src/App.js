@@ -24,14 +24,17 @@ import ThemeToggler from './components/ThemeToggler';
 import NestedComponent from './components/NestedComponent';
 import ThemedBox from './components/ThemedBox';
 import UseRefDemo from './UseRefDemo';
+import ReducerCounter from './ReducerCounter';
+import UserFormReducer from './UserFormReducer';
 
 const App = () => {
-  const appTitle = "React useRef Hook Demo";
+  const appTitle = "React useReducer Hook Demo";
 
   return (
     <>
       <Header title={appTitle} />
-      <UseRefDemo />
+      <ReducerCounter />
+      <UserFormReducer />
     </>
   );
 };
