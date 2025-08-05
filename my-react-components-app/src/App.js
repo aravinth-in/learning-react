@@ -1,44 +1,36 @@
-import React, { useState } from 'react';
-import Greeting from './components/Greeting';
+import React from 'react';
 import Header from './components/Header';
-import Button from './components/Button';
-import Counter from './components/Counter';
-import Toggle from './components/Toggle';
-import InputField from './components/InputField';
-import RandomNumberDisplay from './components/RandomNumberDisplay';
-import LiveClock from './components/LiveClock';
-import LoginControl from './components/LoginControl'
-import LoadingSpinner from './components/LoadingSpinner'
-import ListDisplay from './components/ListDisplay'
-import RegistrationForm from './components/RegistrationForm'
-import FragmentExample from './components/Table'
-import PortalDemo from './components/PortalDemo';
-import InlineStyleDemo from './components/InlineStyleDemo';
-import GlobalStyleDemo from './components/GlobalStyleDemo';
-import CssModuleDemo from './components/CssModuleDemo';
-import StyledComponentsDemo from './components/StyledComponentsDemo';
-import EffectCounter from './components/EffectCounter';
-import TimerWithCleanup from './components/TimerWithCleanup';
-import ThemeContext from './ThemeContext';
-import ThemeToggler from './components/ThemeToggler';
-import NestedComponent from './components/NestedComponent';
-import ThemedBox from './components/ThemedBox';
-import UseRefDemo from './UseRefDemo';
-import ReducerCounter from './ReducerCounter';
-import UserFormReducer from './UserFormReducer';
-import PerformanceDemo from './PerformanceDemo';
-import CustomHooksDemo from './CustomHooksDemo';
-import TodoApp from './components/TodoApp';
-import { TodoProvider } from './TodoContext';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import UsersPage from './pages/UsersPage';
 
 const App = () => {
-  const appTitle = "React `useContext` + `useReducer` Demo";
-
   return (
-    <TodoProvider> {/* Wrap the app with the Provider */}
-      <Header title={appTitle} />
-      <TodoApp />
-    </TodoProvider>
+    <BrowserRouter>
+      <Header title="React Router Demo" />
+      
+      <nav style={{ padding: '20px', borderBottom: '1px solid #ccc', backgroundColor: '#f4f4f4' }}>
+        <Link to="/" style={{ margin: '0 10px', textDecoration: 'none', fontWeight: 'bold', color: '#007bff' }}>Home</Link>
+        <Link to="/about" style={{ margin: '0 10px', textDecoration: 'none', fontWeight: 'bold', color: '#007bff' }}>About</Link>
+        <Link to="/users" style={{ margin: '0 10px', textDecoration: 'none', fontWeight: 'bold', color: '#007bff' }}>Users</Link>
+        <Link to="/users/123" style={{ margin: '0 10px', textDecoration: 'none', fontWeight: 'bold', color: '#007bff' }}>User 123</Link>
+      </nav>
+
+      <div style={{ padding: '20px' }}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          {/* A route with a dynamic parameter :userId */}
+          <Route path="/users/:userId" element={<UsersPage />} />
+          {/* A route for /users to show a list, for example */}
+          <Route path="/users" element={<UsersPage />} /> 
+          {/* A catch-all route for any undefined paths */}
+          <Route path="*" element={<h2>404: Page Not Found</h2>} />
+        </Routes>
+      </div>
+
+    </BrowserRouter>
   );
 };
 
