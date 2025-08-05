@@ -28,15 +28,17 @@ import ReducerCounter from './ReducerCounter';
 import UserFormReducer from './UserFormReducer';
 import PerformanceDemo from './PerformanceDemo';
 import CustomHooksDemo from './CustomHooksDemo';
+import TodoApp from './components/TodoApp';
+import { TodoProvider } from './TodoContext';
 
 const App = () => {
-  const appTitle = "React Custom Hooks Demo";
+  const appTitle = "React `useContext` + `useReducer` Demo";
 
   return (
-    <>
+    <TodoProvider> {/* Wrap the app with the Provider */}
       <Header title={appTitle} />
-      <CustomHooksDemo />
-    </>
+      <TodoApp />
+    </TodoProvider>
   );
 };
 
