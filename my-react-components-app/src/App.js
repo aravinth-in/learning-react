@@ -1,12 +1,11 @@
 import React from 'react';
 import Header from './components/Header';
-import Counter from './components/Counter1';
+import PostsList from './components/PostsList';
 
 const App = () => {
   return (
     <>
-      <Header title="React Query Data Fetching" />
-      <Counter />
+      <PostsList />
     </>
   );
 };

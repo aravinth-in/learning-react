@@ -1,38 +1,33 @@
-import { useQuery } from '@tanstack/react-query';
-
-// A function to fetch the data
-const fetchPosts = async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return response.json();
-};
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPosts } from '../features/posts/postsSlice';
 
 const PostsList = () => {
-  // Use the useQuery hook to fetch and manage the data
-  const { data, isLoading, isError, error } = useQuery({
-    // The queryKey is a unique identifier for this query.
-    // React Query uses it for caching and refetching.
-    queryKey: ['posts'],
-    // The queryFn is the function that actually fetches the data.
-    queryFn: fetchPosts,
-  });
+  const dispatch = useDispatch();
 
-  if (isLoading) {
+  // Select the posts and the status from the Redux store
+  const { posts, status, error } = useSelector((state) => state.posts);
+
+  // Dispatch the thunk on component mount
+  useEffect(() => {
+    if (status === 'idle') { // Check status to prevent re-fetching on re-renders
+      dispatch(fetchPosts());
+    }
+  }, [status, dispatch]);
+
+  if (status === 'loading') {
     return <div>Loading posts...</div>;
   }
 
-  if (isError) {
-    return <div>An error occurred: {error.message}</div>;
+  if (status === 'failed') {
+    return <div>An error occurred: {error}</div>;
   }
 
-  // Once data is loaded, display it
   return (
-    <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
-      <h2>Posts</h2>
+    <div style={{ maxWidth: '800px', margin: '20px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
+      <h2>Posts from Redux Thunk</h2>
       <ul>
-        {data.slice(0, 10).map((post) => (
+        {posts.slice(0, 10).map((post) => (
           <li key={post.id} style={{ marginBottom: '10px', padding: '10px', border: '1px solid #eee', borderRadius: '4px' }}>
             <strong>{post.title}</strong>
             <p>{post.body}</p>
