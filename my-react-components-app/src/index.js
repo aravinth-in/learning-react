@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'; // Import createRoot from react-dom/client
 import App from './App'; // Import our main App component
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
-// Create a client
-const queryClient = new QueryClient();
+import { store } from './app/store';
+import { Provider } from 'react-redux';
 
 // Get the root DOM element where the React app will be mounted
 const rootElement = document.getElementById('root');
@@ -14,8 +12,8 @@ const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
       <App />
-    </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 );
